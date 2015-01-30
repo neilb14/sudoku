@@ -52,13 +52,12 @@ module Sudoku
 							cell[:set] = cell[:set].reject{|v| v == check[:value]}
 							raise "Invalid set #{cell.inspect}" unless cell[:set].length >= 1
 						end
-						row,col,map = i%3,j%3,{0 => [0,1,2], 1 => [3,4,5], 2 => [6,7,8]}
+						row,col,map = i/3, j/3, {0 => [0,1,2], 1 => [3,4,5], 2 => [6,7,8]}
 						map[row].each do |x|
 							map[col].each do |y|
 								next if x==i and y==j
 								check = board[x][y]
 								next unless check[:solved]
-								puts "[#{i}][#{j}] [#{x}][#{y}] " + cell.inspect + " | " + check.inspect
 								cell[:set] = cell[:set].reject{|v| v == check[:value]}
 								raise "Invalid set #{cell.inspect}" unless cell[:set].length >= 1
 							end
