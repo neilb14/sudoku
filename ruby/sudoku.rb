@@ -4,4 +4,6 @@ module Sudoku
 	extend Board
 end
 
-puts Sudoku::load_file(ARGV.shift).inspect
+board = Sudoku::load_file(ARGV.shift)
+Sudoku::solve(board)
+Sudoku::display(board)
